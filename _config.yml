@@ -90,7 +90,7 @@ service-worker: true
 # MathJax rendering for layout:page (e.g. post preview)
 page-mathjax: false
 
-Friends
+# Friends
 friends:
   [
     { title: "川的萌宠店", href: "https://hhchuan.gitee.io/project1/pet_shop/" },
