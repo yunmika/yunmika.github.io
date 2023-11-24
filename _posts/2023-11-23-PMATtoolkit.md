@@ -15,7 +15,7 @@ tags:
 ---
 
 
-目前已经开发出很多软件应用在植物线粒体基因组的组装，大部分都是针对二代测序数据和三代测序数据ONT及CLR进行组装。受限于二代数据的长度及ONT和CLR测序数据的准确性，对复杂的植物线粒体基因组组装效果并不理想。PMAT可以对WGS的三代测序数据ONT、CLR及HiFi进行组装，并且自动选择线粒体基因组中的序列。该软件目前只能在linux系统运行，github地址 https://github.com/bichangwei/PMAT 。
+目前已经开发出很多软件应用在植物线粒体基因组的组装，大部分都是针对二代测序数据和三代测序数据ONT及CLR进行组装。受限于二代数据的长度及ONT和CLR测序数据的准确性，对复杂的植物线粒体基因组组装效果并不理想。PMAT可以对WGS的三代测序数据ONT、CLR及HiFi进行组装，并且自动选择线粒体基因组中的序列。该软件目前只能在linux系统运行，[github地址](https://github.com/bichangwei/PMAT) 。
 
 ### PMAT 安装
 通过git安装
