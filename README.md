@@ -1,1 +1,1 @@
-Powered by Hux
+Powered by [Hux](https://github.com/huxpro/huxpro.github.io)
