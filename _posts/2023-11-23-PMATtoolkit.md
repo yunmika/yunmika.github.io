@@ -50,7 +50,6 @@ PMAT --help
 
 ### PMAT 使用
 Run `PMAT --help` to view the program's usage guide.
-
 ```shell
 usage: PMAT <command> <arguments>
 
@@ -88,9 +87,7 @@ Commands:
 ```
 
 - **autoMito** 对WGS测序数据（ONT, CLR 和 HiFi）进行从头组装分析
-
-`PMAT autoMito -h` 查看程序all的帮助文档
-
+`PMAT autoMito -h` 查看程序autoMito的帮助文档
 ```sh
 # 必选参数
 -i --input      #WGS测序数据文件，可以是CLR，ONT 和 HiFi，必须是fasta或者fastq格式或者压缩后的文件
@@ -111,7 +108,7 @@ Commands:
 ```
 
 - **graphBuild** 对组装结果自动检查线粒体基因组序列，并生成gfa文件
-
+`PMAT graphBuild -h` 查看程序graphBuild的帮助文档
 ```sh
 # 必选参数
 -c --ContigGraph    #组装得到的 PMATContigGraph.txt
