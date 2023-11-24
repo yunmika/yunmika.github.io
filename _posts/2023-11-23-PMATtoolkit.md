@@ -52,78 +52,78 @@ PMAT --help
 Run `PMAT --help` to view the program's usage guide.
 
 ```shell
-    usage: PMAT <command> <arguments>
+usage: PMAT <command> <arguments>
 
-     ______     ___           __        ____       _____________ 
-    |   __  \  |   \        /   |      / __ \     |_____   _____|
-    |  |__)  | | |\ \      / /| |     / /  \ \          | |      
-    |   ____/  | | \ \    / / | |    / /____\ \         | |      
-    |  |       | |  \ \  / /  | |   / /______\ \        | |      
-    |  |       | |   \ \/ /   | |  / /        \ \       | |      
-    |__|       |_|    \__/    |_| /_/          \_\      |_|      
+    ______     ___           __        ____       _____________ 
+|   __  \  |   \        /   |      / __ \     |_____   _____|
+|  |__)  | | |\ \      / /| |     / /  \ \          | |      
+|   ____/  | | \ \    / / | |    / /____\ \         | |      
+|  |       | |  \ \  / /  | |   / /______\ \        | |      
+|  |       | |   \ \/ /   | |  / /        \ \       | |      
+|__|       |_|    \__/    |_| /_/          \_\      |_|      
 
-    PMAT            an efficient assembly toolkit for plant mitochondrial genome
-    Version         1.5.2
-    Contributors    Bi,C. and Han,F.
-    Email           bichwei@njfu.edu.cn, hanfc@caf.ac.cn
+PMAT            an efficient assembly toolkit for plant mitochondrial genome
+Version         1.5.2
+Contributors    Bi,C. and Han,F.
+Email           bichwei@njfu.edu.cn, hanfc@caf.ac.cn
 
-    For more information about PMAT, see https://github.com/bichangwei/PMAT
+For more information about PMAT, see https://github.com/bichangwei/PMAT
 
-    optional arguments:
-    -h, --help     show this help message and exit
-    -v, --version  show program's version number and exit
+optional arguments:
+-h, --help     show this help message and exit
+-v, --version  show program's version number and exit
 
-    Commands:
-    
-        autoMito    One-step de novo assembly of the mitochondrial genome. 
-                    This command corrects the raw ONT/CLR data or uses 
-                    the corrected data or HiFi for assembly directly. 
-                    Based on the assembly result, automatically select 
-                    seeds for extension and filter false positives to 
-                    obtain an assembly map of the mitochondrial genome.
-    
-        graphBuild  If PMAT fails to generate the mitochondrial genome 
-                    assembly map in one-step assembly, you can use this 
-                    command by manually select seeds for assembly.
+Commands:
+
+    autoMito    One-step de novo assembly of the mitochondrial genome. 
+                This command corrects the raw ONT/CLR data or uses 
+                the corrected data or HiFi for assembly directly. 
+                Based on the assembly result, automatically select 
+                seeds for extension and filter false positives to 
+                obtain an assembly map of the mitochondrial genome.
+
+    graphBuild  If PMAT fails to generate the mitochondrial genome 
+                assembly map in one-step assembly, you can use this 
+                command by manually select seeds for assembly.
 ```
 
 - **autoMito** 对WGS测序数据（ONT, CLR 和 HiFi）进行从头组装分析
 
-    `PMAT autoMito -h` 查看程序all的帮助文档
+`PMAT autoMito -h` 查看程序all的帮助文档
 
 ```sh
-    # 必选参数
-    -i --input      #WGS测序数据文件，可以是CLR，ONT 和 HiFi，必须是fasta或者fastq格式或者压缩后的文件
-    -o --output     #输出结果路径
-    -st --seqtype   #输入数据类型 CLR/clr、ONT/ont、HiFi/hifi
-    -g --genomesize #物种基因组大小，例如1G 200M等
+# 必选参数
+-i --input      #WGS测序数据文件，可以是CLR，ONT 和 HiFi，必须是fasta或者fastq格式或者压缩后的文件
+-o --output     #输出结果路径
+-st --seqtype   #输入数据类型 CLR/clr、ONT/ont、HiFi/hifi
+-g --genomesize #物种基因组大小，例如1G 200M等
 
-    # 可选参数
-    -tk --task        #可选任务all/p1，默认为all。如果输入数据为高错误率的原始测序数据需要使用all，如果输入数据为纠错后的数据可以选择p1
-    -tp --type        #可选择all/mt/pt，默认为mt。选择进行组装细胞器基因组的类型
-    -cp --canu        #canu软件安装路径，如果已经添加到环境变量中则不需要提供该参数，用于前期的测序数据纠错和修剪过程
-    -np --nextDenovo  #nextDenovo软件的安装路径，如果已经添加到环境变量中则不需要提供该参数，用于数据的纠错
-    -cs --correctsoft #测序数据纠错使用的软件，默认使用nextDenovo，可以选择canu或者NextDenovo
-    -cfg --correctcfg #当使用NextDenovo为纠错软件时，需要提供该参数
-    -fc --factor      #选择一定比例的子集序列作为组装线粒体基因组的数据集，默认使用全部的测序数据进行组装
-    -u, --unloop      #用于自动解环的参数，默认关闭状态
-    -cpu              #选择使用线程数
+# 可选参数
+-tk --task        #可选任务all/p1，默认为all。如果输入数据为高错误率的原始测序数据需要使用all，如果输入数据为纠错后的数据可以选择p1
+-tp --type        #可选择all/mt/pt，默认为mt。选择进行组装细胞器基因组的类型
+-cp --canu        #canu软件安装路径，如果已经添加到环境变量中则不需要提供该参数，用于前期的测序数据纠错和修剪过程
+-np --nextDenovo  #nextDenovo软件的安装路径，如果已经添加到环境变量中则不需要提供该参数，用于数据的纠错
+-cs --correctsoft #测序数据纠错使用的软件，默认使用nextDenovo，可以选择canu或者NextDenovo
+-cfg --correctcfg #当使用NextDenovo为纠错软件时，需要提供该参数
+-fc --factor      #选择一定比例的子集序列作为组装线粒体基因组的数据集，默认使用全部的测序数据进行组装
+-u, --unloop      #用于自动解环的参数，默认关闭状态
+-cpu              #选择使用线程数
 ```
 
 - **graphBuild** 对组装结果自动检查线粒体基因组序列，并生成gfa文件
 
 ```sh
-    # 必选参数
-    -c --ContigGraph    #组装得到的 PMATContigGraph.txt
-    -a --AllContigGraph #组装得到的 PMATAllContigs.fna
-    -o --output         #输出文件路径
-    -gs --genomesize    #物种基因组大小
-    -rs --readsize      #组装使用数据量大小
-    
-    # 可选参数
-    -cpu #线程数
-    -u, --unloop      #用于自动解环的参数，默认关闭状态
-    -s --seeds #选择指定的seeds作为候选种子进行延伸,不提供该参数则进行自动选择
+# 必选参数
+-c --ContigGraph    #组装得到的 PMATContigGraph.txt
+-a --AllContigGraph #组装得到的 PMATAllContigs.fna
+-o --output         #输出文件路径
+-gs --genomesize    #物种基因组大小
+-rs --readsize      #组装使用数据量大小
+
+# 可选参数
+-cpu #线程数
+-u, --unloop      #用于自动解环的参数，默认关闭状态
+-s --seeds #选择指定的seeds作为候选种子进行延伸,不提供该参数则进行自动选择
 ```
 
 ###### 应用实例
@@ -139,7 +139,7 @@ PMAT autoMito -i Arabidopsis_thaliana_550Mb.fa.gz -o ./test1 -st hifi -g 120m -m
 3. 使用graphBuild手动设置候选contig进行组装:
 ```sh
 # Based on the PMATContigGraph.txt file, manually select 3 or more contigs that match the depth of mitochondrial genome sequencing
-PMAT graphBuild -c ./test1/assembly_result/PMATContigGraph.txt -a ./test1/assembly_result/PMATAllContigs.fna -gs 125m -rs ./test1/subsample/assembly_seq.cut20K.fasta -o ./test1_gfa -s 343 345 905 513 1344 -tp mt
+PMAT graphBuild -c ./test1/assembly_result/PMATContigGraph.txt -a ./test1/assembly_result/PMATAllContigs.fna -gs 125m -rs ./test1/subsample/assembly_seq_subset.0.1.fasta -o ./test1_gfa -s 343 345 905 513 1344 -tp mt
 ```
 4. 运行时间
 
@@ -168,7 +168,7 @@ Updates:
 
 PMAT version 1.3.0 (23/9/25)
 Updates:
-
-- 使用apptainer代替singularity，并实现多个任务并行处理
+- 1.3.0之前的版本使用singularity
+- 1.3.0之后的版本使用apptainer，并实现多个任务并行处理
 
 <p style="color: red"><b>软件已经公布在github(https://github.com/bichangwei/PMAT)，期待大家宝贵的建议！</b></p>
