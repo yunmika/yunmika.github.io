@@ -27,9 +27,9 @@ PMAT --help
 ```
 源代码安装
 ```sh
-wget https://github.com/bichangwei/PMAT/archive/refs/tags/v1.5.1.tar.gz
-tar -zxvf v1.5.1.tar.gz
-cd PMAT-1.5.1/bin
+wget https://github.com/bichangwei/PMAT/archive/refs/tags/v1.5.2.tar.gz
+tar -zxvf v1.5.2.tar.gz
+cd PMAT-1.5.2/bin
 chmod a+x PMAT
 PMAT --help
 ```
@@ -63,7 +63,7 @@ Run `PMAT --help` to view the program's usage guide.
     |__|       |_|    \__/    |_| /_/          \_\      |_|      
 
     PMAT            an efficient assembly toolkit for plant mitochondrial genome
-    Version         1.5.1
+    Version         1.5.2
     Contributors    Bi,C. and Han,F.
     Email           bichwei@njfu.edu.cn, hanfc@caf.ac.cn
 
@@ -106,6 +106,7 @@ Run `PMAT --help` to view the program's usage guide.
     -cs --correctsoft #测序数据纠错使用的软件，默认使用nextDenovo，可以选择canu或者NextDenovo
     -cfg --correctcfg #当使用NextDenovo为纠错软件时，需要提供该参数
     -fc --factor      #选择一定比例的子集序列作为组装线粒体基因组的数据集，默认使用全部的测序数据进行组装
+    -u, --unloop      #用于自动解环的参数，默认关闭状态
     -cpu              #选择使用线程数
 ```
 
@@ -121,6 +122,7 @@ Run `PMAT --help` to view the program's usage guide.
     
     # 可选参数
     -cpu #线程数
+    -u, --unloop      #用于自动解环的参数，默认关闭状态
     -s --seeds #选择指定的seeds作为候选种子进行延伸,不提供该参数则进行自动选择
 ```
 
@@ -158,7 +160,7 @@ PMAT graphBuild -c ./test1/assembly_result/PMATContigGraph.txt -a ./test1/assemb
 ###### 更新日志
 PMAT version 1.5.0 (23/11/14)
 Updates:
-- PMAT添加自动解环功能
+- PMAT添加自动解环功能（还在测试中）
 
 PMAT version 1.4.0 (23/11/12)
 Updates:
