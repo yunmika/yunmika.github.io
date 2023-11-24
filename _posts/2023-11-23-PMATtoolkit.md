@@ -86,8 +86,7 @@ Commands:
                 command by manually select seeds for assembly.
 ```
 
-- **autoMito** 对WGS测序数据（ONT, CLR 和 HiFi）进行从头组装分析
-
+**autoMito** 对WGS测序数据（ONT, CLR 和 HiFi）进行从头组装分析  
 `PMAT autoMito -h` 查看程序autoMito的帮助文档
 ```sh
 # 必选参数
@@ -108,8 +107,7 @@ Commands:
 -cpu              #选择使用线程数
 ```
 
-- **graphBuild** 对组装结果自动检查线粒体基因组序列，并生成gfa文件
-
+**graphBuild** 对组装结果自动检查线粒体基因组序列，并生成gfa文件  
 `PMAT graphBuild -h` 查看程序graphBuild的帮助文档
 ```sh
 # 必选参数
