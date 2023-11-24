@@ -54,7 +54,7 @@ Run `PMAT --help` to view the program's usage guide.
 ```shell
 usage: PMAT <command> <arguments>
 
-    ______     ___           __        ____       _____________ 
+ ______     ___           __        ____       _____________ 
 |   __  \  |   \        /   |      / __ \     |_____   _____|
 |  |__)  | | |\ \      / /| |     / /  \ \          | |      
 |   ____/  | | \ \    / / | |    / /____\ \         | |      
