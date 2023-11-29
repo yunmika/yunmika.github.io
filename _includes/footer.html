@@ -16,7 +16,26 @@
                 <div style="text-align: center; font-size: 13px; margin-top: 5px; color: #777777;">
                     <!-- 不蒜子统计代码 -->
                     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-                    <span style="vertical-align: bottom; font-size: 13px;">本站访问量 | <span id="busuanzi_value_page_pv"></span> <i class="ri-eye-fill" style="vertical-align: bottom; font-size: 15px;"></i></span>
+                    <script type="text/javascript">			
+                        function show_runtime() {
+                            window.setTimeout("show_runtime()", 1000);
+                            X = new Date("01/01/2023 00:00:00");
+                            Y = new Date();
+                            T = (Y.getTime() - X.getTime());
+                            M = 24 * 60 * 60 * 1000;
+                            a = T / M;
+                            A = Math.floor(a);
+                            b = (a - A) * 24;
+                            B = Math.floor(b);
+                            c = (b - B) * 60;
+                            C = Math.floor((b - B) * 60);
+                            D = Math.floor((c - C) * 60);
+                            lovetime_span.innerHTML =  A + "天" + B + "小时" + C + "分" + D + "秒"
+                        }
+                        show_runtime();
+                    </script>
+                    <span style="vertical-align: bottom; font-size: 13px;">本站访问量 | <span id="busuanzi_value_page_pv"></span> <i class="ri-eye-fill" style="vertical-align: bottom; font-size: 15px;"></i></span> <br>
+                    Xiao Han <i class="ri-heart-fill" style="vertical-align: middle; color: #ff0000; font-size: 20px;"></i> Xiao Zuo&nbsp;&nbsp; <span id="lovetime_span"></span>
                 </div>
 
             </div>
