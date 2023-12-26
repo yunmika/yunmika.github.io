@@ -42,7 +42,7 @@ $$
 
 其中，$μ$是截距，$X_j$是预测变量的设计矩阵，$β_j$是与$X_j$列相关联的效应向量，$μ_l$是随机效应向量。BGLR支持不同的先验分布类型，包括固定效应(Flat)、高斯分布(BRR)、缩放t分布(BayesA)、双指数分布(BL)、高斯混合分布(BayesC)和缩放t混合分布(BayesB)。
 
-![BGLR](img/data/BGLR.png)
+![BGLR](/img/data/BGLR.png)
 
 下面使用BGLR构建GBLR和rrBLUP，并比较不同模型计算的估计育种值
 ```R
