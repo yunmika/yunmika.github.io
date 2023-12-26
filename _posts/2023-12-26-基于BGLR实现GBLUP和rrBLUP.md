@@ -28,7 +28,7 @@ tags:
 - thin： 控制用于计算后验均值的抽样间隔
 - saveAt：输出结果保存路径（包括前缀）
 
-在这里主要讨论一下如何使用BGLR实现连续变量的GBLUP和RRBLUP模型，对于连续型变量的线性预测模型：
+在这里主要讨论一下如何使用BGLR实现连续变量的GBLUP和RRBLUP模型。对于连续型变量的线性预测模型：
 
 $$
 y=\eta+\varepsilon
@@ -44,27 +44,33 @@ $$
 
 ![BGLR](/img/data/BGLR.png)
 
-下面使用BGLR构建GBLR和rrBLUP，并比较不同模型计算的估计育种值
+下面使用BGLR分别构建GBLR和rrBLUP模型
 ```R
 # 加载数据小麦599
 rm(list = ls())
+if (!require("BGLR"))install.packages('BGLR')
 library(BGLR)
 data(wheat)
 X=wheat.X
 Y=wheat.Y
 ```
-构建rrBLUP模型
+构建rrBLUP模型，这里用到小麦599的SNP数据X，模型选择BRR。返回值中`fmRR$ETA[[1]]$b`是标记效应值，对于rrBLUP模型我们可以根据基因型矩阵和标记效应值计算个体估计育种：
+
+$$
+GEBV_j=\sum_j^p{X_{ij}}\hat\beta_j
+$$
+
 ```R
 RRETA=list(list(X=X, model="BRR"))
 set.seed(666)
 fmRR <- BGLR(y=Y[,1], ETA = RRETA, nIter = 12000, burnIn = 2000, thin = 10, saveAt = "./fmRR_")
 # 估计育种值计算
 GEBV.RR = X%*%fmRR$ETA[[1]]$b
-cor(fmRR$yHat, Y[,1])
-# 输出
-> 0.8185872
+# 拟合相关性
+> cor(fmRR$yHat, Y[,1])
+[1] 0.8178176
 ```
-构建GBLUP模型
+在BGLR中构建GBLUP模型选择RKHS模型，其中`fmG$ETA[[1]]$u`为估计育种值。
 ```R
 Z = scale(X, center = TRUE, scale = TRUE)
 G = tcrossprod(Z)/ncol(Z)
@@ -73,21 +79,24 @@ GETA = list(list(K=G, model="RKHS"))
 fmG <- BGLR(y=Y[,1], ETA = GETA, nIter = 12000, burnIn = 2000, thin = 10, saveAt = "./fmG_")
 # 估计育种值计算
 GEBV.G = fmG$ETA[[1]]$u
-cor(fmG$yHat, Y[,1])
-# 输出
-> 0.8177905
+# 拟合相关性
+> cor(fmG$yHat, Y[,1])
+[1] 0.8167722
 ```
-拟合基因组关系矩阵和标记
+同时拟合基因组关系矩阵和标记，因为这里包含两个模型，返回值中`fmRRG$ETA`包含BRR和RKHS的结果。
 ```R
-# 复杂预测器
-ETA = list(
+RRGETA = list(
   list(X=X, model="BRR"),
   list(K=G, model="RKHS")
 )
-fmRRG <- BGLR(y=Y[,1], ETA=ETA, nIter = 12000, burnIn = 2000, thin = 10, saveAt = "./fmRRG_")
-
+fmRRG <- BGLR(y=Y[,1], ETA=RRGETA, nIter = 12000, burnIn = 2000, thin = 10, saveAt = "./fmRRG_")
 # 估计育种值
 GEBV.GRR = X%*%fmRRG$ETA[[1]]$b + fmRRG$ETA[[2]]$u
+# 输出拟合相关性结果
+> cor(fmRRG$yHat, Y[,1])
+[1] 0.8222919
 ```
+就该性状而言，rrBLUP和GBLUP方法拟合结果区别不大。另外可以选择交叉验证，对表型赋予缺失值查看预测的准确性。
+
 > 参考：  
 > Paulino Pérez, Gustavo de los Campos, Genome-Wide Regression and Prediction with the BGLR Statistical Package, *Genetics*, Volume 198, Issue 2, 1 October 2014, Pages 483–495, https://doi.org/10.1534/genetics.114.164442
