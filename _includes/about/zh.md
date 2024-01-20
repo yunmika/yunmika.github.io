@@ -1,5 +1,11 @@
+<!-- 点击的指引 -->
 <p style="text-align: center; font-weight: bold; font-size: 26px;">
-    👉 <a href="https://yunmika.gitee.io" style="color: #ff0000; text-decoration: none; border-bottom: 3px solid #ff0000; padding-bottom: 4px;">国内站点请点击</a> 👈
+    <!-- 👉 <a href="https://yunmika.gitee.io" style="color: #ff0000; text-decoration: none; border-bottom: 3px solid #ff0000; padding-bottom: 4px;">国内站点请点击</a> 👈 -->
+    <!-- <br> -->
+    👉 <a style="color: #ff0000; text-decoration: none; border-bottom: 3px solid #ff0000; padding-bottom: 4px;">最新推送，请关注微信公众号：有趣儿的生信</a> 👈
+    <div style="display: flex; justify-content: center; margin-top: 10px;">
+        <img src="/img/wx.png" width="100%" height="100%">
+    </div>
 </p>
 
 # 关于本站
